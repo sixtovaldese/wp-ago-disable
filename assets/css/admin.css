@@ -1,0 +1,464 @@
+/* aGo Disable Admin Styles */
+
+/* Layout (shared .ago-* pattern) */
+.ago-layout {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.ago-main {
+    flex: 1;
+    max-width: 680px;
+}
+
+.ago-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+}
+
+@media (max-width: 960px) {
+    .ago-layout { flex-direction: column; }
+    .ago-sidebar { width: 100%; max-width: 680px; }
+}
+
+.ago-card {
+    max-width: 100% !important;
+}
+
+.ago-card h2 {
+    margin: 0 0 16px;
+    font-size: 15px;
+    color: #1d2327;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Toggle switches */
+.ago-toggle {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    margin: 4px 0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.ago-toggle:hover {
+    background: #f0f6fc;
+}
+
+.ago-toggle-label {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ago-toggle-label strong {
+    font-size: 13px;
+    color: #1d2327;
+}
+
+.ago-toggle-label span {
+    font-size: 12px;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* Custom toggle switch */
+.ago-switch {
+    display: none;
+}
+
+.ago-toggle-slider {
+    position: relative;
+    width: 40px;
+    min-width: 40px;
+    height: 22px;
+    background: #c3c4c7;
+    border-radius: 11px;
+    transition: background 0.2s;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
+.ago-toggle-slider::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.ago-switch:checked + .ago-toggle-slider {
+    background: #2271b1;
+}
+
+.ago-switch:checked + .ago-toggle-slider::after {
+    transform: translateX(18px);
+}
+
+/* Heartbeat radio group */
+.ago-heartbeat-group {
+    padding: 12px;
+    margin: 4px 0;
+    border-radius: 6px;
+}
+
+.ago-radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+    padding-left: 4px;
+}
+
+.ago-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+}
+
+.ago-radio:hover {
+    background: #f0f6fc;
+}
+
+.ago-radio input[type="radio"] {
+    margin: 0;
+}
+
+/* Save notice */
+.ago-notice {
+    padding: 12px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.ago-notice.success {
+    background: #edfaef;
+    border: 1px solid #00a32a;
+    color: #00601b;
+}
+
+.ago-notice.error {
+    background: #fcf0f1;
+    border: 1px solid #d63638;
+    color: #8a1114;
+}
+
+/* Actions */
+.ago-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 8px;
+}
+
+#ago-save-btn.saving {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Features list */
+.ago-features {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+}
+
+.ago-features li {
+    font-size: 13px;
+    padding: 3px 0;
+    color: #555;
+}
+
+.ago-features li::before {
+    content: "\2713";
+    color: #00a32a;
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+/* Donation */
+.ago-donation {
+    text-align: center;
+}
+
+.ago-donation-amounts {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin: 12px 0;
+}
+
+.ago-amount {
+    display: inline-block;
+    padding: 8px 18px;
+    background: #f0f0f1;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    color: #1d2327;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.ago-amount:hover {
+    background: #2271b1;
+    color: #fff;
+    border-color: #2271b1;
+}
+
+.ago-coffee-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 24px;
+    background: #1d2327;
+    color: #fff !important;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+    margin: 8px 0;
+}
+
+.ago-coffee-btn:hover {
+    background: #2271b1;
+    color: #fff !important;
+}
+
+.ago-donation-note {
+    font-size: 11px;
+    color: #999;
+    margin-top: 8px;
+}
+
+/* Footer */
+.ago-footer {
+    text-align: center;
+    padding: 16px 0;
+}
+
+.ago-footer-logo {
+    display: inline-block;
+    margin-bottom: 8px;
+    transition: opacity 0.2s;
+}
+
+.ago-footer-logo:hover {
+    opacity: 0.8;
+}
+
+.ago-footer p {
+    font-size: 13px;
+    color: #666;
+    margin: 4px 0;
+}
+
+.ago-footer a {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+/* ── v1.1: intro card + recommended pill + caveat ── */
+.ago-intro { border-left: 4px solid #d63638; background: linear-gradient(180deg, #fcf0f1 0%, #ffffff 70%); }
+.ago-intro p { font-size: 14px; line-height: 1.55; margin: 8px 0; }
+.ago-intro h2 { color: #1d2327; font-size: 16px; }
+.ago-intro code { background: rgba(214,54,56,0.08); padding: 1px 5px; border-radius: 3px; }
+
+.ago-rec-pill {
+    display: inline-block !important;
+    vertical-align: middle;
+    margin-left: 8px;
+    padding: 3px 9px !important;
+    background: #1e8a4a !important;
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+    line-height: 1.2 !important;
+}
+
+.ago-toggle-row { align-items: flex-start; padding: 14px 0; }
+.ago-toggle-label { display: flex; flex-direction: column; gap: 4px; }
+.ago-toggle-label > strong { font-size: 14px; color: #1d2327; }
+.ago-toggle-desc { font-size: 12.5px; color: #50575e; line-height: 1.45; display: block; }
+.ago-toggle-desc code, .ago-toggle-caveat code { background: #f0f0f1; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+.ago-toggle-caveat { display: block; margin-top: 6px; padding: 8px 10px; background: #fff7e6; border-left: 3px solid #dba617; border-radius: 0 4px 4px 0; font-size: 12.5px; color: #614a00; line-height: 1.45; }
+
+#ago-apply-recommended { background: #1e8a4a; border-color: #176f3a; }
+#ago-apply-recommended:hover { background: #176f3a; border-color: #135e30; color: #fff; }
+
+.ago-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.ago-section { margin: 20px 0; padding-bottom: 16px; border-bottom: 1px solid #eee; }
+.ago-section:last-of-type { border-bottom: none; }
+
+/* ── v1.2: collapsible toggle rows + accessible pill ── */
+
+/* Override v1.0 toggle styling: now `.ago-switch` is the label wrapper, `.ago-slider` is the visual. */
+.ago-switch {
+    display: inline-block !important;
+    position: relative;
+    width: 46px;
+    height: 24px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.ago-switch input[type="checkbox"] {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+}
+.ago-switch .ago-slider {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: #c3c4c7;
+    border-radius: 12px;
+    transition: background 0.2s;
+}
+.ago-switch .ago-slider::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.ago-switch input[type="checkbox"]:checked + .ago-slider {
+    background: #1e8a4a;
+}
+.ago-switch input[type="checkbox"]:checked + .ago-slider::before {
+    transform: translateX(22px);
+}
+.ago-switch input[type="checkbox"]:focus + .ago-slider {
+    box-shadow: 0 0 0 2px rgba(34,113,177,0.3);
+}
+.ago-toggle-row {
+    padding: 14px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+.ago-toggle-row:last-child { border-bottom: none; }
+
+.ago-toggle-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.ago-toggle-info { flex: 1; min-width: 0; }
+.ago-toggle-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.ago-toggle-title strong { font-size: 14px; color: #1d2327; }
+.ago-toggle-summary {
+    font-size: 13px;
+    color: #50575e;
+    margin-top: 3px;
+    line-height: 1.4;
+}
+
+/* Recommended pill: white text on green, forced for theme overrides */
+.ago-rec-pill {
+    display: inline-block !important;
+    padding: 2px 8px !important;
+    background: #00a32a !important;
+    background-image: linear-gradient(135deg, #00a32a, #007a1f) !important;
+    color: #ffffff !important;
+    font-size: 10px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.4px !important;
+    border-radius: 10px !important;
+    text-transform: uppercase !important;
+    line-height: 1.2 !important;
+    text-shadow: 0 1px 0 rgba(0,0,0,0.15);
+}
+
+/* Collapsible details */
+.ago-toggle-details {
+    margin-top: 8px;
+    margin-left: 0;
+    border-top: 1px dashed #e0e0e0;
+    padding-top: 8px;
+}
+.ago-toggle-details > summary {
+    cursor: pointer;
+    font-size: 12.5px;
+    color: #2271b1;
+    user-select: none;
+    list-style: none;
+    padding: 4px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.ago-toggle-details > summary::before {
+    content: "\25B6"; /* triangle right */
+    font-size: 9px;
+    color: #2271b1;
+    transition: transform 0.15s;
+    display: inline-block;
+}
+.ago-toggle-details[open] > summary::before { transform: rotate(90deg); }
+.ago-toggle-details > summary:hover { color: #135e96; }
+.ago-toggle-details > summary::-webkit-details-marker { display: none; }
+.ago-toggle-details-inner { padding: 4px 0 0 14px; }
+.ago-toggle-details-inner p {
+    font-size: 12.5px;
+    color: #50575e;
+    margin: 4px 0;
+    line-height: 1.5;
+}
+.ago-toggle-details-inner code { background: #f0f0f1; padding: 1px 5px; border-radius: 3px; font-size: 11.5px; }
+.ago-toggle-caveat {
+    display: block;
+    margin-top: 6px !important;
+    padding: 8px 10px !important;
+    background: #fff7e6 !important;
+    border-left: 3px solid #dba617 !important;
+    border-radius: 0 4px 4px 0;
+    color: #614a00 !important;
+}
+
+/* Intro card */
+.ago-intro { border-left: 4px solid #d63638; background: linear-gradient(180deg, #fcf0f1 0%, #ffffff 70%); }
+.ago-intro p { font-size: 14px; line-height: 1.55; margin: 8px 0; }
+.ago-intro h2 { color: #1d2327; font-size: 16px; }
+.ago-intro code { background: rgba(214,54,56,0.08); padding: 1px 5px; border-radius: 3px; }
+
+#ago-apply-recommended { background: #1e8a4a; border-color: #176f3a; color: #fff; }
+#ago-apply-recommended:hover { background: #176f3a; border-color: #135e30; color: #fff; }
+.ago-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.ago-section { margin: 20px 0; padding-bottom: 8px; }
+.ago-section h3 { margin-bottom: 4px; }
+
+#ago-disable-status { padding: 8px 14px; border-radius: 4px; margin: 10px 0; font-size: 13px; }
+#ago-disable-status.success { background: #edfaef; color: #1e8a4a; border: 1px solid #1e8a4a; }
+#ago-disable-status.error { background: #fcf0f1; color: #d63638; border: 1px solid #d63638; }

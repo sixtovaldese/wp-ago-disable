@@ -1,4 +1,3 @@
-/* aGo Disable Admin JS — autosave on toggle, recommended preset. */
 (function () {
     'use strict';
 
@@ -11,7 +10,7 @@
 
     if (!toggles.length) return;
 
-    var settings = (typeof agoDisable !== 'undefined') ? agoDisable.settings : {};
+    var settings = (typeof agodisableData !== 'undefined') ? agodisableData.settings : {};
     toggles.forEach(function (toggle) {
         var key = toggle.getAttribute('data-key');
         if (key && settings[key]) toggle.checked = true;
@@ -60,9 +59,9 @@
             statusBox.textContent = 'Saving…';
         }
 
-        fetch(agoDisable.restUrl + '/settings', {
+        fetch(agodisableData.restUrl + '/settings', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': agoDisable.nonce },
+            headers: { 'Content-Type': 'application/json', 'X-WP-Nonce': agodisableData.nonce },
             body: JSON.stringify(data),
         })
         .then(function (r) { return r.json(); })

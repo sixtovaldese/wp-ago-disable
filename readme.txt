@@ -1,9 +1,9 @@
 === aGo Disable ===
-Contributors: sixtovaldese
+Contributors: agolab
 Donate link: https://paypal.me/sixtovaldes
 Tags: disable, comments, gutenberg, auto-updates, rss
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 7.0
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
@@ -88,7 +88,7 @@ The plugin uses your WordPress site language. UI is translated to English, Spani
 
 == Privacy ==
 
-aGo Disable does not collect or transmit any data. It stores only one option in the `wp_options` table under the key `ago_disable_settings`, containing the toggle states. No custom database tables are created. Deactivating the plugin does not delete the option. Uninstalling deletes it.
+aGo Disable does not collect or transmit any data. It stores only one option in the `wp_options` table under the key `agodisable_settings`, containing the toggle states. No custom database tables are created. Deactivating the plugin does not delete the option. Uninstalling deletes it.
 
 == Screenshots ==
 

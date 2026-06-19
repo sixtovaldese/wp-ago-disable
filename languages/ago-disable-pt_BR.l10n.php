@@ -161,4 +161,7 @@ return ['x-generator'=>'aGo Disable','translation-revision-date'=>'2026-03-17','
 'You can fine-tune below: each switch shows a 1-line summary, and "More info" expands the full explanation if you need it.'=>'Você pode ajustar abaixo: cada interruptor mostra um resumo em uma linha, e "Mais informação" expande a explicação completa se você precisar.',
 'If you don\'t moderate comments, they are spam magnet and security risk.'=>'Se você não modera os comentários, eles viram ímã de spam e risco de segurança.',
 'Native search is poor and bots probe it. Skip if you don\'t need search or use a better one.'=>'A busca nativa é fraca e bots a sondam. Desative se você não precisa de busca ou se usa uma melhor.',
+'Unmoderated comments are a spam magnet and a security risk.'=>'Comentários sem moderação são um ímã de spam e um risco de segurança.',
+'Native search is poor and bots probe it. Skip it if you do not need search, or use a better one.'=>'A busca nativa é fraca e os bots a sondam. Desative-a se você não precisa de busca, ou use uma melhor.',
+'Pingbacks can be used as a reflection-attack vector and are mostly spam.'=>'Pingbacks podem ser usados como vetor de ataques de reflexão e quase sempre são spam.',
 ]];

@@ -17,7 +17,7 @@ class Page {
                 'label'       => __( 'Comments', 'ago-disable' ),
                 'summary'     => __( 'Turns off WordPress comments site-wide.', 'ago-disable' ),
                 'what'        => __( 'Removes comment forms, listings, the comments admin menu, and disables comments on existing posts and pages.', 'ago-disable' ),
-                'why'         => __( 'If you don\'t moderate comments, they are spam magnet and security risk.', 'ago-disable' ),
+                'why'         => __( 'Unmoderated comments are a spam magnet and a security risk.', 'ago-disable' ),
                 'caveat'      => __( 'Existing comments stay in the database.', 'ago-disable' ),
                 'recommended' => false,
             ],
@@ -35,7 +35,7 @@ class Page {
                 'label'       => __( 'Internal search', 'ago-disable' ),
                 'summary'     => __( 'Turns off the WordPress search (`?s=` returns 404).', 'ago-disable' ),
                 'what'        => __( 'Returns 404 for `?s=` queries and removes the search template from the theme.', 'ago-disable' ),
-                'why'         => __( 'Native search is poor and bots probe it. Skip if you don\'t need search or use a better one.', 'ago-disable' ),
+                'why'         => __( 'Native search is poor and bots probe it. Skip it if you do not need search, or use a better one.', 'ago-disable' ),
                 'caveat'      => __( 'Make sure no link in your theme points to a search bar.', 'ago-disable' ),
                 'recommended' => false,
             ],
@@ -73,7 +73,7 @@ class Page {
                 'label'       => __( 'Pingbacks & trackbacks', 'ago-disable' ),
                 'summary'     => __( 'Closes a known DDoS amplification vector.', 'ago-disable' ),
                 'what'        => __( 'Disables the pingback and trackback systems blogs used to notify each other about links.', 'ago-disable' ),
-                'why'         => __( 'Pingbacks are reflection-attack vector and 99% spam in 2026.', 'ago-disable' ),
+                'why'         => __( 'Pingbacks can be used as a reflection-attack vector and are mostly spam.', 'ago-disable' ),
                 'caveat'      => '',
                 'recommended' => true,
             ],
@@ -155,9 +155,9 @@ class Page {
         ?>
         <div class="wrap">
             <h1>
-                <img src="<?php echo esc_url( AGO_DISABLE_URL . 'assets/img/agolab.webp' ); ?>" alt="aGo Lab" style="height:28px;width:auto;vertical-align:middle;margin-right:8px">
+                <img src="<?php echo esc_url( AGODISABLE_URL . 'assets/img/agolab.webp' ); ?>" alt="aGo Lab" style="height:28px;width:auto;vertical-align:middle;margin-right:8px">
                 <?php esc_html_e( 'aGo Disable', 'ago-disable' ); ?>
-                <span style="font-size:12px;color:#999;margin-left:8px">v<?php echo esc_html( AGO_DISABLE_VERSION ); ?></span>
+                <span style="font-size:12px;color:#999;margin-left:8px">v<?php echo esc_html( AGODISABLE_VERSION ); ?></span>
             </h1>
 
             <div class="ago-layout">
@@ -230,10 +230,8 @@ class Page {
 
                 </div>
 
-                <!-- SIDEBAR -->
                 <div class="ago-sidebar">
 
-                    <!-- Quick links -->
                     <div class="card ago-card">
                         <h3 style="margin-top:0"><?php esc_html_e( 'Quick links', 'ago-disable' ); ?></h3>
                         <ul class="ago-features" style="list-style:none;padding:0;margin:0">
@@ -243,7 +241,6 @@ class Page {
                         </ul>
                     </div>
 
-                    <!-- About -->
                     <div class="card ago-card">
                         <h3 style="margin-top:0"><?php esc_html_e( 'About', 'ago-disable' ); ?></h3>
                         <p style="font-size:13px;color:#666"><?php esc_html_e( 'Reversible switches to disable WordPress features you do not use. Safe defaults enabled out of the box.', 'ago-disable' ); ?></p>
@@ -256,17 +253,16 @@ class Page {
                         </ul>
                     </div>
 
-                    <!-- Cross-sell aGo Lab plugins -->
                     <div class="card ago-card">
                         <h3 style="margin-top:0"><?php esc_html_e( 'Other aGo Lab plugins', 'ago-disable' ); ?></h3>
                         <p style="font-size:13px;color:#666;margin-top:0">
                             <?php esc_html_e( 'Free WordPress plugins from the same team. No upsell pressure.', 'ago-disable' ); ?>
                         </p>
                         <ul class="ago-features">
-                            <li><strong>aGo Cleanup</strong> — <?php esc_html_e( 'Remove WordPress bloat from the HTML head and assets.', 'ago-disable' ); ?></li>
-                            <li><strong>aGo SMTP</strong> — <?php esc_html_e( 'SMTP for WordPress with 8 provider presets and credentials wizard.', 'ago-disable' ); ?></li>
-                            <li><strong>aGo AI Chatbot</strong> — <?php esc_html_e( 'AI customer support widget for your site.', 'ago-disable' ); ?></li>
-                            <li><strong>aGo Legal</strong> — <?php esc_html_e( 'GDPR / LGPD / Chile Law 21.719 compliance toolkit.', 'ago-disable' ); ?></li>
+                            <li><strong>aGo Cleanup</strong>, <?php esc_html_e( 'Remove WordPress bloat from the HTML head and assets.', 'ago-disable' ); ?></li>
+                            <li><strong>aGo Mail Pilot</strong>, <?php esc_html_e( 'SMTP for WordPress with 8 provider presets and credentials wizard.', 'ago-disable' ); ?></li>
+                            <li><strong>aGo AI Chatbot</strong>, <?php esc_html_e( 'AI customer support widget for your site.', 'ago-disable' ); ?></li>
+                            <li><strong>aGo Legal</strong>, <?php esc_html_e( 'GDPR / LGPD / Chile Law 21.719 compliance toolkit.', 'ago-disable' ); ?></li>
                         </ul>
                         <p>
                             <a href="https://ago.cl/herramientas/" target="_blank" rel="noopener" class="button button-secondary" style="width:100%;text-align:center">
@@ -275,7 +271,6 @@ class Page {
                         </p>
                     </div>
 
-                    <!-- Donation -->
                     <div class="card ago-card ago-donation">
                         <h3 style="margin-top:0"><?php esc_html_e( 'Support open source', 'ago-disable' ); ?></h3>
                         <p style="font-size:13px;color:#666"><?php esc_html_e( 'If this plugin saves you time, consider buying us a coffee.', 'ago-disable' ); ?></p>
@@ -290,10 +285,9 @@ class Page {
                         </a>
                     </div>
 
-                    <!-- Footer -->
                     <div class="ago-footer">
                         <a href="https://ago.cl" target="_blank" rel="noopener" class="ago-footer-logo">
-                            <img src="<?php echo esc_url( AGO_DISABLE_URL . 'assets/img/agolab.webp' ); ?>" alt="aGo Lab" style="height:40px;width:auto">
+                            <img src="<?php echo esc_url( AGODISABLE_URL . 'assets/img/agolab.webp' ); ?>" alt="aGo Lab" style="height:40px;width:auto">
                         </a>
                         <p>
                             <?php

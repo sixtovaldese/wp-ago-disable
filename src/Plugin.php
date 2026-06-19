@@ -48,8 +48,8 @@ class Plugin {
 
     /** Seed recommended defaults on first run. Idempotent. */
     private function maybe_seed_defaults(): void {
-        if ( false === get_option( 'ago_disable_settings', false ) ) {
-            update_option( 'ago_disable_settings', [
+        if ( false === get_option( 'agodisable_settings', false ) ) {
+            update_option( 'agodisable_settings', [
                 'attachment_pages' => true,
                 'author_archives'  => true,
                 'pingbacks'        => true,
@@ -63,23 +63,18 @@ class Plugin {
     /* ───── Textdomain ───── */
 
     public function load_textdomain(): void {
-        // WP 6.5+ just-in-time loading busca .l10n.php solo en WP_LANG_DIR/plugins/
-        // (translate.wordpress.org). Para los archivos bundleados en /languages/ del
-        // plugin sigue siendo obligatorio load_plugin_textdomain. El warning de
-        // Plugin Check load_plugin_textdomain.WrongDirectory aplica a plugins que
-        // ya tienen traducciones publicadas en WP.org, no a Lites pre-aprobacion.
-        load_plugin_textdomain( 'ago-disable', false, dirname( plugin_basename( AGO_DISABLE_FILE ) ) . '/languages' );
+        load_plugin_textdomain( 'ago-disable', false, dirname( plugin_basename( AGODISABLE_FILE ) ) . '/languages' );
     }
 
     /* ───── Admin menu (smart pattern) ───── */
 
     public function register_admin_menu(): void {
-        if ( empty( $GLOBALS['admin_page_hooks']['ago-tools'] ) ) {
+        if ( empty( $GLOBALS['admin_page_hooks']['agolab-tools'] ) ) {
             add_menu_page(
                 __( 'aGo Tools', 'ago-disable' ),
                 __( 'aGo Tools', 'ago-disable' ),
                 'manage_options',
-                'ago-tools',
+                'agolab-tools',
                 '__return_null',
                 'dashicons-hammer',
                 81
@@ -87,7 +82,7 @@ class Plugin {
         }
 
         add_submenu_page(
-            'ago-tools',
+            'agolab-tools',
             __( 'aGo Disable', 'ago-disable' ),
             __( 'Disable', 'ago-disable' ),
             'manage_options',
@@ -95,7 +90,7 @@ class Plugin {
             [ Admin\Page::class, 'render' ]
         );
 
-        remove_submenu_page( 'ago-tools', 'ago-tools' );
+        remove_submenu_page( 'agolab-tools', 'agolab-tools' );
     }
 
     /* ───── REST routes ───── */
@@ -138,7 +133,7 @@ class Plugin {
         }
         $settings['heartbeat_mode'] = $heartbeat_mode;
 
-        update_option( 'ago_disable_settings', $settings );
+        update_option( 'agodisable_settings', $settings );
 
         return new \WP_REST_Response( [ 'saved' => true, 'settings' => $settings ] );
     }
@@ -151,21 +146,21 @@ class Plugin {
         }
 
         wp_enqueue_style(
-            'ago-disable-admin',
-            AGO_DISABLE_URL . 'assets/css/admin.css',
+            'agodisable-admin',
+            AGODISABLE_URL . 'assets/css/admin.css',
             [],
-            AGO_DISABLE_VERSION
+            AGODISABLE_VERSION
         );
 
         wp_enqueue_script(
-            'ago-disable-admin',
-            AGO_DISABLE_URL . 'assets/js/admin.js',
+            'agodisable-admin',
+            AGODISABLE_URL . 'assets/js/admin.js',
             [],
-            AGO_DISABLE_VERSION,
+            AGODISABLE_VERSION,
             true
         );
 
-        wp_localize_script( 'ago-disable-admin', 'agoDisable', [
+        wp_localize_script( 'agodisable-admin', 'agodisableData', [
             'restUrl'  => rest_url( 'ago-disable/v1' ),
             'nonce'    => wp_create_nonce( 'wp_rest' ),
             'settings' => $this->get_settings(),
@@ -195,7 +190,7 @@ class Plugin {
 
     /** @return array<string, mixed> */
     public function get_settings(): array {
-        $saved    = get_option( 'ago_disable_settings', [] );
+        $saved    = get_option( 'agodisable_settings', [] );
         $settings = [];
 
         foreach ( array_keys( self::MODULES ) as $key ) {

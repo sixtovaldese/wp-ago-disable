@@ -119,6 +119,7 @@ return ['x-generator'=>'aGo Disable','translation-revision-date'=>'2026-03-17','
 'Plugin nag notices'=>'Avisos chatos de plugins',
 'Public pages and archives'=>'Páginas públicas e arquivos',
 'Quick links'=>'Links úteis',
+'Documentation'=>'Documentação',
 'Recommended'=>'Recomendado',
 'Reduce dashboard clutter for editors and clients.'=>'Reduz a poluição do dashboard para editores e clientes.',
 'Reduces noise for editors and clients.'=>'Reduz o ruído para editores e clientes.',

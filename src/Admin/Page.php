@@ -235,6 +235,7 @@ class Page {
                     <div class="card ago-card">
                         <h3 style="margin-top:0"><?php esc_html_e( 'Quick links', 'ago-disable' ); ?></h3>
                         <ul class="ago-features" style="list-style:none;padding:0;margin:0">
+                            <li><a href="https://ago.cl/herramientas/wordpress/ago-disable/docs" target="_blank" rel="noopener"><?php esc_html_e( 'Documentation', 'ago-disable' ); ?></a></li>
                             <li><a href="https://pagespeed.web.dev/" target="_blank" rel="noopener"><?php esc_html_e( 'Measure your site with PageSpeed', 'ago-disable' ); ?></a></li>
                             <li><a href="https://gtmetrix.com/" target="_blank" rel="noopener"><?php esc_html_e( 'Audit performance with GTmetrix', 'ago-disable' ); ?></a></li>
                             <li><a href="https://sitecheck.sucuri.net/" target="_blank" rel="noopener"><?php esc_html_e( 'Free security scan (Sucuri)', 'ago-disable' ); ?></a></li>

@@ -19,31 +19,31 @@ Every toggle ships with a 1-line summary plus an expandable "More info" block th
 
 **Toggles included**
 
-Content:
+WordPress features:
 
 * Comments site-wide (posts, pages, custom post types, comment forms, admin menu).
 * Gutenberg block editor (forces the classic editor).
-* Pingbacks and trackbacks.
-* Author archives (`/author/username/`).
-* Attachment pages (the individual page WordPress creates for each upload).
 * Internal site search.
 * RSS feeds (main, comments, taxonomies).
 
-Updates:
+Public pages and archives:
 
+* Attachment pages (the individual page WordPress creates for each upload).
+* Author archives (`/author/username/`).
+
+Security and updates:
+
+* Pingbacks and trackbacks.
 * Core auto-updates.
 * Plugin auto-updates.
 * Theme auto-updates.
 
-Admin UX:
+Admin noise:
 
 * The admin bar for non-admin users.
-* "Try Gutenberg" and similar admin notices.
+* "Try Gutenberg" and similar plugin nag notices.
 * The "WordPress Events and News" dashboard widget.
-
-System:
-
-* The Heartbeat API on the frontend (throttles to 60 seconds on the admin).
+* The Heartbeat API (throttled to one poll per 60 seconds site-wide).
 
 All toggles are reversible: untick the switch and changes save automatically. No external services, no remote calls, no telemetry.
 
@@ -92,7 +92,7 @@ aGo Disable does not collect or transmit any data. It stores only one option in 
 
 == Screenshots ==
 
-1. Disable dashboard with 4 sections of toggles (Content, Updates, Admin UX, System) and the "Apply recommended" header.
+1. Disable dashboard with 4 sections of toggles (WordPress features, Public pages and archives, Security and updates, Admin noise) and the "Apply recommended" header.
 2. A toggle row expanded showing "How it works", "Why" and "Watch out".
 3. Sidebar with Quick links, About, Other aGo Lab plugins and donation cards.
 
@@ -100,7 +100,7 @@ aGo Disable does not collect or transmit any data. It stores only one option in 
 
 = 1.0.0 =
 * Initial release.
-* 14 toggles across Content, Updates, Admin UX and System.
+* 14 toggles across WordPress features, Public pages and archives, Security and updates, and Admin noise.
 * Safe defaults seeded on first activation.
 * Auto-save on toggle change.
 * English, Spanish and Brazilian Portuguese translations bundled.

@@ -232,6 +232,7 @@ return ['x-generator'=>'aGo Disable','translation-revision-date'=>'2026-03-17','
 'Plugin nag notices'=>'Avisos molestos de plugins',
 
 'Quick links'=>'Enlaces útiles',
+'Documentation'=>'Documentación',
 'Measure your site with PageSpeed'=>'Medir tu sitio con PageSpeed',
 'Audit performance with GTmetrix'=>'Auditar rendimiento con GTmetrix',
 'Free security scan (Sucuri)'=>'Escaneo de seguridad gratuito (Sucuri)',

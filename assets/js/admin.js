@@ -3,9 +3,9 @@
 
     var toggles = document.querySelectorAll('.ago-switch input[type="checkbox"]');
     var enableAll = document.getElementById('ago-enable-all');
-    var disableAll = document.getElementById('ago-disable-all');
+    var disableAll = document.getElementById('agodisable-all');
     var applyRecommended = document.getElementById('ago-apply-recommended');
-    var statusBox = document.getElementById('ago-disable-status');
+    var statusBox = document.getElementById('agodisable-status');
     var saveTimer = null;
 
     if (!toggles.length) return;
@@ -56,7 +56,7 @@
         if (statusBox) {
             statusBox.style.display = 'block';
             statusBox.className = '';
-            statusBox.textContent = 'Saving…';
+            statusBox.textContent = agodisableData.i18n.saving;
         }
 
         fetch(agodisableData.restUrl + '/settings', {
@@ -69,17 +69,17 @@
             if (!statusBox) return;
             if (resp.saved) {
                 statusBox.className = 'success';
-                statusBox.textContent = 'Settings saved. Reload the frontend to see changes.';
+                statusBox.textContent = agodisableData.i18n.saved;
             } else {
                 statusBox.className = 'error';
-                statusBox.textContent = 'Could not save settings.';
+                statusBox.textContent = agodisableData.i18n.error;
             }
             setTimeout(function () { statusBox.style.display = 'none'; }, 3000);
         })
         .catch(function (err) {
             if (!statusBox) return;
             statusBox.className = 'error';
-            statusBox.textContent = 'Error: ' + err.message;
+            statusBox.textContent = agodisableData.i18n.error + ' ' + err.message;
         });
     }
 })();

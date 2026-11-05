@@ -441,6 +441,9 @@
 .ago-section { margin: 20px 0; padding-bottom: 8px; }
 .ago-section h3 { margin-bottom: 4px; }
 
-#ago-disable-status { padding: 8px 14px; border-radius: 4px; margin: 10px 0; font-size: 13px; }
-#ago-disable-status.success { background: #edfaef; color: #1e8a4a; border: 1px solid #1e8a4a; }
-#ago-disable-status.error { background: #fcf0f1; color: #d63638; border: 1px solid #d63638; }
+#agodisable-status { padding: 8px 14px; border-radius: 4px; margin: 10px 0; font-size: 13px; }
+#agodisable-status.success { background: #edfaef; color: #1e8a4a; border: 1px solid #1e8a4a; }
+#agodisable-status.error { background: #fcf0f1; color: #d63638; border: 1px solid #d63638; }
+
+.ago-toggle-summary code,
+.ago-toggle-details-inner code { background: #f0f0f1; padding: 1px 5px; border-radius: 3px; font-size: 11.5px; }

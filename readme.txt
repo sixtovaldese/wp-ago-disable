@@ -3,7 +3,7 @@ Contributors: agolab
 Donate link: https://paypal.me/sixtovaldes
 Tags: disable, comments, gutenberg, auto-updates, rss
 Requires at least: 6.0
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 8.1
 Stable tag: 1.0.0
 License: GPL-2.0-or-later
@@ -84,7 +84,7 @@ No. Zero outbound network traffic. No telemetry, no usage stats, no remote confi
 
 = Is there a way to switch the plugin language? =
 
-The plugin uses your WordPress site language. UI is translated to English, Spanish and Brazilian Portuguese out of the box.
+The plugin uses your WordPress site language. Translations are contributed through translate.wordpress.org, and the screen shows in English until one exists for your language.
 
 == Privacy ==
 
@@ -103,7 +103,6 @@ aGo Disable does not collect or transmit any data. It stores only one option in 
 * 14 toggles across WordPress features, Public pages and archives, Security and updates, and Admin noise.
 * Safe defaults seeded on first activation.
 * Auto-save on toggle change.
-* English, Spanish and Brazilian Portuguese translations bundled.
 
 == Upgrade Notice ==
 

@@ -37,7 +37,6 @@ class Plugin {
         // Seed safe defaults the first time the plugin runs (idempotent).
         $this->maybe_seed_defaults();
 
-        add_action( 'init', [ $this, 'load_textdomain' ] );
         add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
         add_action( 'rest_api_init', [ $this, 'register_rest_routes' ] );
         add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
@@ -60,21 +59,28 @@ class Plugin {
         }
     }
 
-    /* ───── Textdomain ───── */
-
-    public function load_textdomain(): void {
-        load_plugin_textdomain( 'ago-disable', false, dirname( plugin_basename( AGODISABLE_FILE ) ) . '/languages' );
-    }
-
     /* ───── Admin menu (smart pattern) ───── */
 
+    private const MENU_SLUG = 'agodisable-tools';
+
     public function register_admin_menu(): void {
-        if ( empty( $GLOBALS['admin_page_hooks']['agolab-tools'] ) ) {
+        /*
+         * Other plugins from the same author may already have added a shared
+         * parent menu. When one is there the page goes under it, so the
+         * dashboard does not grow a second top level entry for the same set of
+         * tools. When there is none, this plugin creates its own parent under
+         * its own prefix and never defines the shared slug.
+         */
+        $parent = 'agolab-tools';
+
+        if ( empty( $GLOBALS['admin_page_hooks'][ $parent ] ) ) {
+            $parent = self::MENU_SLUG;
+
             add_menu_page(
                 __( 'aGo Tools', 'ago-disable' ),
                 __( 'aGo Tools', 'ago-disable' ),
                 'manage_options',
-                'agolab-tools',
+                $parent,
                 '__return_null',
                 'dashicons-hammer',
                 81
@@ -82,21 +88,21 @@ class Plugin {
         }
 
         add_submenu_page(
-            'agolab-tools',
+            $parent,
             __( 'aGo Disable', 'ago-disable' ),
             __( 'Disable', 'ago-disable' ),
             'manage_options',
-            'ago-disable',
+            'agodisable',
             [ Admin\Page::class, 'render' ]
         );
 
-        remove_submenu_page( 'agolab-tools', 'agolab-tools' );
+        remove_submenu_page( $parent, $parent );
     }
 
     /* ───── REST routes ───── */
 
     public function register_rest_routes(): void {
-        register_rest_route( 'ago-disable/v1', '/settings', [
+        register_rest_route( 'agodisable/v1', '/settings', [
             [
                 'methods'             => 'GET',
                 'callback'            => [ $this, 'handle_get_settings' ],
@@ -141,7 +147,7 @@ class Plugin {
     /* ───── Assets ───── */
 
     public function enqueue_assets( string $hook ): void {
-        if ( ! str_ends_with( $hook, '_page_ago-disable' ) ) {
+        if ( ! str_ends_with( $hook, '_page_agodisable' ) ) {
             return;
         }
 
@@ -161,9 +167,14 @@ class Plugin {
         );
 
         wp_localize_script( 'agodisable-admin', 'agodisableData', [
-            'restUrl'  => rest_url( 'ago-disable/v1' ),
+            'restUrl'  => rest_url( 'agodisable/v1' ),
             'nonce'    => wp_create_nonce( 'wp_rest' ),
             'settings' => $this->get_settings(),
+            'i18n'     => [
+                'saving' => __( 'Saving...', 'ago-disable' ),
+                'saved'  => __( 'Settings saved. Reload the frontend to see changes.', 'ago-disable' ),
+                'error'  => __( 'Could not save settings.', 'ago-disable' ),
+            ],
         ] );
     }
 

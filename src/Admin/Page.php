@@ -144,6 +144,11 @@ class Page {
         ];
     }
 
+    /** Escapes a text and shows the parts written between backticks as code. */
+    private static function with_code( string $text ): string {
+        return (string) preg_replace( '/`([^`]+)`/', '<code>$1</code>', esc_html( $text ) );
+    }
+
     public static function render(): void {
         $toggles      = self::toggles();
         $section_meta = [
@@ -177,12 +182,12 @@ class Page {
                                     <?php esc_html_e( 'Apply recommended', 'ago-disable' ); ?>
                                 </button>
                                 <button id="ago-enable-all" class="button" type="button"><?php esc_html_e( 'Enable all', 'ago-disable' ); ?></button>
-                                <button id="ago-disable-all" class="button" type="button"><?php esc_html_e( 'Reset', 'ago-disable' ); ?></button>
+                                <button id="agodisable-all" class="button" type="button"><?php esc_html_e( 'Reset', 'ago-disable' ); ?></button>
                             </div>
                         </div>
                         <p class="description"><?php esc_html_e( 'Changes save automatically. Each switch ON means "this WordPress feature is disabled".', 'ago-disable' ); ?></p>
 
-                        <div id="ago-disable-status" style="display:none"></div>
+                        <div id="agodisable-status" style="display:none"></div>
 
                         <?php foreach ( $section_meta as $section => $meta ) : ?>
                             <div class="ago-section">
@@ -199,7 +204,7 @@ class Page {
                                                     <span class="ago-rec-pill"><?php esc_html_e( 'Recommended', 'ago-disable' ); ?></span>
                                                 <?php endif; ?>
                                             </div>
-                                            <div class="ago-toggle-summary"><?php echo esc_html( $t['summary'] ); ?></div>
+                                            <div class="ago-toggle-summary"><?php echo wp_kses( self::with_code( $t['summary'] ), [ 'code' => [] ] ); ?></div>
                                         </div>
                                         <label class="ago-switch">
                                             <input type="checkbox" data-key="<?php echo esc_attr( $key ); ?>" <?php echo $t['recommended'] ? 'data-recommended="1"' : ''; ?>>
@@ -211,13 +216,13 @@ class Page {
                                         <summary><?php esc_html_e( 'More info', 'ago-disable' ); ?></summary>
                                         <div class="ago-toggle-details-inner">
                                             <?php if ( $t['what'] ) : ?>
-                                                <p><strong><?php esc_html_e( 'How it works:', 'ago-disable' ); ?></strong> <?php echo esc_html( $t['what'] ); ?></p>
+                                                <p><strong><?php esc_html_e( 'How it works:', 'ago-disable' ); ?></strong> <?php echo wp_kses( self::with_code( $t['what'] ), [ 'code' => [] ] ); ?></p>
                                             <?php endif; ?>
                                             <?php if ( $t['why'] ) : ?>
-                                                <p><strong><?php esc_html_e( 'Why:', 'ago-disable' ); ?></strong> <?php echo esc_html( $t['why'] ); ?></p>
+                                                <p><strong><?php esc_html_e( 'Why:', 'ago-disable' ); ?></strong> <?php echo wp_kses( self::with_code( $t['why'] ), [ 'code' => [] ] ); ?></p>
                                             <?php endif; ?>
                                             <?php if ( $t['caveat'] ) : ?>
-                                                <p class="ago-toggle-caveat"><strong><?php esc_html_e( 'Watch out:', 'ago-disable' ); ?></strong> <?php echo esc_html( $t['caveat'] ); ?></p>
+                                                <p class="ago-toggle-caveat"><strong><?php esc_html_e( 'Watch out:', 'ago-disable' ); ?></strong> <?php echo wp_kses( self::with_code( $t['caveat'] ), [ 'code' => [] ] ); ?></p>
                                             <?php endif; ?>
                                         </div>
                                     </details>
@@ -249,7 +254,7 @@ class Page {
                             <li><?php esc_html_e( 'Auto-enables safe defaults on install', 'ago-disable' ); ?></li>
                             <li><?php esc_html_e( '14 reversible switches', 'ago-disable' ); ?></li>
                             <li><?php esc_html_e( 'No remote calls, no tracking', 'ago-disable' ); ?></li>
-                            <li><?php esc_html_e( 'English, Spanish, Brazilian Portuguese', 'ago-disable' ); ?></li>
+                            <li><?php esc_html_e( 'Available in your language when the translation exists', 'ago-disable' ); ?></li>
                             <li><?php esc_html_e( 'Completely free, no Pro tier.', 'ago-disable' ); ?></li>
                         </ul>
                     </div>

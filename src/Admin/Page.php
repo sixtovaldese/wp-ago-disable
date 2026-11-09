@@ -207,7 +207,7 @@ class Page {
                                             <div class="ago-toggle-summary"><?php echo wp_kses( self::with_code( $t['summary'] ), [ 'code' => [] ] ); ?></div>
                                         </div>
                                         <label class="ago-switch">
-                                            <input type="checkbox" data-key="<?php echo esc_attr( $key ); ?>" <?php echo $t['recommended'] ? 'data-recommended="1"' : ''; ?>>
+                                            <input type="checkbox" data-key="<?php echo esc_attr( $key ); ?>" <?php if ( $t['recommended'] ) : ?>data-recommended="1"<?php endif; ?>>
                                             <span class="ago-slider"></span>
                                         </label>
                                     </div>
